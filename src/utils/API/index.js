@@ -32,7 +32,7 @@ export const addTranslation = async (body) => {
 
 export const deleteTranslation = async (translation) => {
     translation.status = "inactive";
-    const response = await fetch("https://ta-noroff-api.herokuapp.com/translations" + translation.id, {
+    const response = await fetch("https://ta-noroff-api.herokuapp.com/translations/" + translation.id, {
         method: 'PATCH',
         headers: {
             'Content-type': 'application/json'
@@ -44,7 +44,7 @@ export const deleteTranslation = async (translation) => {
 }
 
 export const getUsersMostRecentTranslations = async (user) => {
-    const response = await fetch("https://ta-noroff-api.herokuapp.com/translations?_sort=id&_order=desc&_limit=10&status=active&author=" + user)
+    const response = await fetch("https://ta-noroff-api.herokuapp.com/translations?_sort=id&_order=desc&_limit=10&status=active&username=" + user)
     const data = await response.json();
     return data;
 }
